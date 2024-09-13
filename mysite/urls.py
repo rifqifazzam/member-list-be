@@ -16,8 +16,13 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from members import urls as members_urls
+from members.views import custom_login, validate_token
+
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include('members.urls')),
+    path('api/login/', custom_login, name='custom_login'),  
+    path('api/validate-token/', validate_token, name='validate-token'),
 ]
